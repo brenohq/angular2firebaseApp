@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+
+import { FirebaseService } from './services/firebase.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +14,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
 import { EditListingComponent } from './components/edit-listing/edit-listing.component';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBX2EhPqKvaJVKHEhHn8FwH8Aevau4Xg0c",
+  authDomain: "angular2firebaseapp-92f1a.firebaseapp.com",
+  databaseURL: "https://angular2firebaseapp-92f1a.firebaseio.com",
+  storageBucket: "angular2firebaseapp-92f1a.appspot.com",
+  messagingSenderId: "1073690120437"
+};
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,9 +43,10 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
