@@ -32,7 +32,7 @@ const myFirebaseAuthConfig = {
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'listings', component: ListingsComponent },
-  { path: 'listings/:id', component: ListingComponent },
+  { path: 'listing/:id', component: ListingComponent },
   { path: 'add-listing', component: AddListingComponent }
 ];
 
