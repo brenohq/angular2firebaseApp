@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { FirebaseService } from './services/firebase.service';
 
@@ -23,9 +24,15 @@ export const firebaseConfig = {
   messagingSenderId: "1073690120437"
 };
 
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Popup
+};
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'listings', component: ListingsComponent },
+  { path: 'listings/:id', component: ListingComponent },
   { path: 'add-listing', component: AddListingComponent }
 ];
 
@@ -43,8 +50,9 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    FlashMessagesModule,
     RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
