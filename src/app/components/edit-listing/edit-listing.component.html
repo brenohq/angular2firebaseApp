@@ -1,3 +1,49 @@
-<p>
-  edit-listing works!
-</p>
+<a [routerLink]="['/listings']">Voltar</a>
+
+<br />
+
+<h2 class="page-header">Editar Moradia</h2>
+<form (submit)="onEditSubmit()">
+
+  <div class="form-group">
+    <label>Nome</label>
+    <input class="form-control" type="text" [(ngModel)]="title" name="title" required>
+  </div>
+
+  <div class="form-group">
+    <label>Cidade</label>
+    <input class="form-control" type="text" [(ngModel)]="city" name="city" required>
+  </div>
+
+  <div class="form-group">
+    <label>Proprietário</label>
+    <input class="form-control" type="text" [(ngModel)]="owner" name="owner" required>
+  </div>
+
+  <div class="form-group">
+    <label>Quartos</label>
+    <input class="form-control" type="number" [(ngModel)]="bedrooms" name="bedrooms" required>
+  </div>
+
+  <div class="form-group">
+    <label>Tipo</label>
+    <select class="form-control" type="text" [(ngModel)]="type" name="type" required>
+      <option value="Herança">Herança</option>
+      <option value="Condomínio">Condomínio</option>
+      <option value="Apartamento">Apartamento</option>
+      <option value="República">República</option>
+    </select>
+  </div>
+
+  <!--<div class="form-group">
+    <input id="image" name="image" [(ngModel)]="image" type="file">
+  </div>-->
+
+  <div class="form-group">
+    <label>Preço</label>
+    <input class="form-control" type="text" [(ngModel)]="price" name="price" required>
+  </div>
+
+  <button type="submit" value="submit" class="btn btn-warning">Editar Lista</button>
+
+</form>
